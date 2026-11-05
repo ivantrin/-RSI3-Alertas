@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101827">
+  <title>RSI 2 Alertas</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div class="mark">R2</div>
+      <div><h1>RSI 2 Alertas</h1><p>Monitor de RSI(2) para XAU/USD e EUR/USD</p></div>
+    </header>
+
+    <section class="panel">
+      <div class="section-title">Configuração do gráfico</div>
+      <div class="grid">
+        <label>Ativo
+          <select id="symbol">
+            <option value="XAU/USD">Ouro (XAU/USD)</option>
+            <option value="EUR/USD">Euro (EUR/USD)</option>
+          </select>
+        </label>
+        <label>Período do gráfico
+          <select id="interval">
+            <option value="1min">1 minuto</option><option value="5min">5 minutos</option>
+            <option value="15min" selected>15 minutos</option><option value="30min">30 minutos</option>
+            <option value="1h">1 hora</option><option value="4h">4 horas</option>
+            <option value="1day">Diário</option>
+          </select>
+        </label>
+        <label>Período do RSI
+          <input id="rsiPeriod" type="number" min="2" max="100" value="2">
+        </label>
+        <label>Atualizar a cada
+          <select id="poll">
+            <option value="30">30 segundos</option><option value="60" selected>1 minuto</option>
+            <option value="120">2 minutos</option><option value="300">5 minutos</option>
+          </select>
+        </label>
+      </div>
+      <div class="levels">
+        <label>Nível inferior <input id="low" type="number" min="0" max="100" step="0.1" value="1"></label>
+        <label>Nível superior <input id="high" type="number" min="0" max="100" step="0.1" value="99"></label>
+      </div>
+      <label class="key-label">Chave gratuita da API Twelve Data
+        <input id="apiKey" type="password" autocomplete="off" placeholder="Cole sua chave aqui">
+      </label>
+      <p class="hint">A chave fica salva somente neste navegador. É necessária para consultar cotações. O plano gratuito tem limites de uso definidos pelo provedor.</p>
+      <div class="actions">
+        <button id="save">Salvar configuração</button>
+        <button id="notify" class="secondary">Ativar notificações</button>
+      </div>
+    </section>
+
+    <section class="panel quote-panel">
+      <div class="section-title">Leitura atual</div>
+      <div class="quote-top"><span id="assetName">Ouro (XAU/USD)</span><span id="status" class="status">Aguardando configuração</span></div>
+      <div class="rsi-value" id="rsiValue">--<small>RSI(2)</small></div>
+      <div class="meter"><div id="meterFill"></div></div>
+      <div class="meter-labels"><span>0</span><span id="lowLabel">1</span><span id="highLabel">99</span><span>100</span></div>
+      <div class="reading" id="reading">Insira sua chave gratuita e toque em “Salvar configuração”.</div>
+      <div class="updated" id="updated">Ainda não há cotação consultada.</div>
+    </section>
+
+    <section class="panel">
+      <div class="section-title">Histórico recente de leitura</div>
+      <div id="history" class="history"><p class="hint">As leituras aparecerão aqui após a primeira consulta.</p></div>
+    </section>
+    <footer>Protótipo inicial • Dados fornecidos por Twelve Data • Não é recomendação financeira.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

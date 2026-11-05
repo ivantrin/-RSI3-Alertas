@@ -1,0 +1,21 @@
+RSI 2 ALERTAS — PROTÓTIPO INICIAL
+
+O que já está preparado:
+- Interface instalável como aplicativo web (PWA).
+- Seleção de XAU/USD e EUR/USD.
+- Períodos de gráfico selecionáveis.
+- Cálculo do RSI configurável (padrão 2).
+- Níveis configuráveis (padrão 1 e 99).
+- Consulta periódica e notificações do navegador.
+
+IMPORTANTE:
+1. Este pacote ainda NÃO é um APK Android.
+2. Para receber cotações, é necessária uma chave de API da Twelve Data.
+3. O provedor pode impor limites no plano gratuito; consulte as condições atuais antes de usar.
+4. A consulta é feita em intervalos periódicos. Não é tick a tick e pode haver atraso.
+5. O RSI é calculado sobre os fechamentos retornados pela API. O último candle pode estar em formação e o valor pode mudar.
+6. O alerta dispara quando a leitura consultada está no nível ou além dele; não garante execução nem resultado de operação.
+7. A chave fica no armazenamento local do navegador neste protótipo. Não publique sua chave em repositórios públicos.
+
+PRÓXIMA ETAPA:
+Publicar estes arquivos no GitHub Pages ou hospedagem HTTPS e testar no Android. Depois validar a fonte de dados e a forma de atualização antes de empacotar como APK.

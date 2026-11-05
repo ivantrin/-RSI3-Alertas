@@ -1,0 +1,1 @@
+const CACHE="rsi2-alertas-v1";self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(["./","./index.html","./styles.css","./app.js","./manifest.json","./icon.svg"]))));self.addEventListener("fetch",e=>{if(new URL(e.request.url).origin===location.origin)e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)));});
